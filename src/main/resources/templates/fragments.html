@@ -33,28 +33,36 @@
         <th:block th:each="job : ${jobs}">
             <table class="job-listing">
                 <tr>
-                    <td>ID</td>
-                    <td th:text="${job.getId()}"></td>
+                    <td>ID:</td>
+                    <td th:text="${job.id}">id</td>
                 </tr>
                 <tr>
-                    <td>Name</td>
-                    <td th:text="${job.getName()}"></td>
+                    <td>NAME:</td>
+                    <td th:text="${job.name}">name</td>
                 </tr>
                 <tr>
-                    <td>Employer</td>
-                    <td th:text="${job.getEmployer().getValue()}"></td>
+                    <td th:text="${#strings.toUpperCase(
+                    columns.get('employer'))} +':'">employer label
+                    </td>
+                    <td th:text="${job.employer.value}">employer</td>
                 </tr>
                 <tr>
-                    <td>Location</td>
-                    <td th:text="${job.getLocation().getValue()}"></td>
+                    <td th:text="${#strings.toUpperCase(
+                                         columns.get('location'))} + ':'">location label
+                    </td>
+                    <td th:text="${job.location.value}">location</td>
                 </tr>
                 <tr>
-                    <td>Position Type</td>
-                    <td th:text="${job.getPositionType().getValue()}"></td>
+                    <td th:text="${#strings.toUpperCase(
+                                        columns.get('positionType'))} + ':'">position type label
+                    </td>
+                    <td th:text="${job.positionType.value}">position type</td>
                 </tr>
                 <tr>
-                    <td>Skill</td>
-                    <td th:text="${job.getCoreCompetency().getValue()}"></td>
+                    <td th:text="${#strings.toUpperCase(
+                                        columns.get('coreCompetency'))} + ':'">skill label
+                        </td>
+                    <td th:text="${job.coreCompetency.value}">core compentency</td>
                 </tr>
             </table>
         </th:block>

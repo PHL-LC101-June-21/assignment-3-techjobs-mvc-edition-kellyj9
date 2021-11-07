@@ -8,11 +8,8 @@
 
 <div class="container body-content">
 
-
-
     <form th:action="@{/search/results}" method = "POST">
         <h2>Search by:</h2>
-
         <p>
             <span th:each="column : ${columns}">
                 <input
@@ -20,7 +17,8 @@
                         name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
+                        th:checked="${searchType == null ?
+                        column.key.equals('all') : column.key.equals(searchType)}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
         </p>
