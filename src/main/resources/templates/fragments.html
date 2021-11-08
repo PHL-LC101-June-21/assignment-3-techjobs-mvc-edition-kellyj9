@@ -20,11 +20,59 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <!-- Super bonus mission - links -->
+                    <li th:each="action: ${actions}">
+                        <a th:href="@{'/' + ${action.key}}" th:text="${action.value}">
+                        </a>
+                    </li>
+                    <!--
                     <li><a th:href="@{/search}">Search</a></li>
                     <li><a th:href="@{/list}">List</a></li>
+                    -->
                 </ul>
             </div>
         </div>
+    </div>
+
+    <div th:fragment="results-list">
+        <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+        <!-- TODO #1 - Use a loop to display job results in a table. -->
+        <th:block th:each="job : ${jobs}">
+            <table class="job-listing">
+                <tr>
+                    <td>ID:</td>
+                    <td th:text="${job.id}">id</td>
+                </tr>
+                <tr>
+                    <td>NAME:</td>
+                    <td th:text="${job.name}">name</td>
+                </tr>
+                <tr>
+                    <td th:text="${#strings.toUpperCase(
+                    columns.get('employer'))} +':'">employer label
+                    </td>
+                    <td th:text="${job.employer.value}">employer</td>
+                </tr>
+                <tr>
+                    <td th:text="${#strings.toUpperCase(
+                                         columns.get('location'))} + ':'">location label
+                    </td>
+                    <td th:text="${job.location.value}">location</td>
+                </tr>
+                <tr>
+                    <td th:text="${#strings.toUpperCase(
+                                        columns.get('positionType'))} + ':'">position type label
+                    </td>
+                    <td th:text="${job.positionType.value}">position type</td>
+                </tr>
+                <tr>
+                    <td th:text="${#strings.toUpperCase(
+                                        columns.get('coreCompetency'))} + ':'">skill label
+                        </td>
+                    <td th:text="${job.coreCompetency.value}">core competency</td>
+                </tr>
+            </table>
+        </th:block>
     </div>
 
 </body>
