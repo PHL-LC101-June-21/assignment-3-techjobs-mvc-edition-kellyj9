@@ -20,8 +20,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <!-- Super bonus mission - links -->
+                    <li th:each="action: ${actions}">
+                        <a th:href="@{'/' + ${action.key}}" th:text="${action.value}">
+                        </a>
+                    </li>
+                    <!--
                     <li><a th:href="@{/search}">Search</a></li>
                     <li><a th:href="@{/list}">List</a></li>
+                    -->
                 </ul>
             </div>
         </div>
@@ -62,7 +69,7 @@
                     <td th:text="${#strings.toUpperCase(
                                         columns.get('coreCompetency'))} + ':'">skill label
                         </td>
-                    <td th:text="${job.coreCompetency.value}">core compentency</td>
+                    <td th:text="${job.coreCompetency.value}">core competency</td>
                 </tr>
             </table>
         </th:block>
